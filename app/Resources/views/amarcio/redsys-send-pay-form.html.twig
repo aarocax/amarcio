@@ -1,0 +1,20 @@
+{% extends 'amarcio/index.html.twig' %}
+
+{% block body %}
+  <div class="formularios cantidad-donativo">
+    <p>Va a realizar un donativo de <strong>{{ contribution }}</strong></p>
+    <form name="frm" action="{{ comerce_url }}" method="POST">
+        <input type="hidden" name="Ds_SignatureVersion" value="{{ version }}"/></br>
+        <input type="hidden" name="Ds_MerchantParameters" value="{{ params }}"/></br>
+        <input type="hidden" name="Ds_Signature" value="{{ signature }}"/></br>
+        <input type="submit" value="Enviar" >
+      </form>
+  </div>
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+{% block javascript %}
+	{{ parent() }}
+{% endblock %}

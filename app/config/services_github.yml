@@ -1,0 +1,76 @@
+parameters:
+    captcha.verify.secret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    captcha.verify.url: https://www.google.com/recaptcha/api/siteverify
+
+    emailer.notification.to:  admin@xxxxxxxxxxxxxxxxx.org
+    emailer.notification.asunto: Mensaje desde Fundación Antonio Marcio
+    emailer.notification.from: admin@xxxxxxxxxxxxxxxxxxxxxxxx.org
+    emailer.notification.conCopia: admin@xxxxxxxxxxxxxxxxxxxxxxxx.org
+
+    paypal.client.id: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa
+    paypal.client.secret: BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBbbb
+    paypal.return.url: http://localhost/amarcio/web/app_dev.php/paypal-response-ok/
+    paypal.cancel.url: http://localhost/amarcio/web/app_dev.php/paypal-cancel/
+
+    MERCHANT_MERCHANTCODE: xxxxxxxxxxxxxxxx
+    TERMINAL_NUMBER: xx
+    ENCRYPTED_KEY: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    CURRENCY: 978
+    TRANSACTION_TYPE: 0
+    ENCRYPTED_TYPE: HMAC_SHA256_V1
+    COMMERCE_URL: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    MERCHANT_URL: http://localhost/amarcio/web/app_dev.php/tpv-response/
+    MERCHANT_URL_OK: http://localhost/amarcio/web/app_dev.php/tpv-response/
+    MERCHANT_URL_KO: http://localhost/amarcio/web/app_dev.php/tpv-response-ko/
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        # automatically injects dependencies in your services
+        autowire: true
+        # automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+        # this means you cannot fetch services directly from the container via $container->get()
+        # if you need to do this, you can override this setting on individual services
+        public: false
+
+    # makes classes in src/AppBundle available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    AppBundle\:
+        resource: '../../src/AppBundle/*'
+        # you can exclude directories or files
+        # but if a service is unused, it's removed anyway
+        exclude: '../../src/AppBundle/{Entity,Repository,Tests}'
+
+    #PayPal\:
+        #resource: '../../src/AppBundle/Service/Apis/PayPal/*'
+        # you can exclude directories or files
+        # but if a service is unused, it's removed anyway
+
+
+    # controllers are imported separately to make sure they're public
+    # and have a tag that allows actions to type-hint services
+    AppBundle\Controller\:
+        resource: '../../src/AppBundle/Controller'
+        public: true
+        tags: ['controller.service_arguments']
+
+    app.captcha.verify:
+        class: AppBundle\Service\CaptchaVerify
+        public: true
+        arguments: ["%captcha.verify.secret%", "%captcha.verify.url%"]
+
+    app.notification.emailer:
+        class: AppBundle\Service\Emailer
+        public: true
+        arguments: ['@mailer', "%emailer.notification.to%", "%emailer.notification.asunto%", "%emailer.notification.from%","%emailer.notification.conCopia%"]
+
+    app.paypaypal:
+        class: AppBundle\Service\PayPaypal
+        public: true
+        arguments: ["%paypal.client.id%","%paypal.client.secret%", "%paypal.return.url%", "%paypal.cancel.url%"]
+
+    app.payredsys:
+        class: AppBundle\Service\PayRedsys
+        public: true
+        arguments: ["%MERCHANT_MERCHANTCODE%", "%TERMINAL_NUMBER%", "%ENCRYPTED_KEY%", "%CURRENCY%", "%TRANSACTION_TYPE%", "%ENCRYPTED_TYPE%", "%COMMERCE_URL%", "%MERCHANT_URL%", "%MERCHANT_URL_OK%", "%MERCHANT_URL_KO%" ]

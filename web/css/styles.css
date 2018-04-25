@@ -1,0 +1,522 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+/* html { font-size: 62.5%; }  =10px
+body { font-size: 1.4rem; } =14px
+h1   { font-size: 2.4rem; } =24px */
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  font-family: 'Open Sans', sans-serif;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body{
+  max-width: 1200px;
+  margin: auto;
+  font-size: 1.4rem;
+}
+
+@font-face {
+  font-family: 'multicolore';
+  src: url(../fonts/multicolore.otf);
+}
+.multicolore{font-family: 'multicolore';}
+
+/* Cabecera */
+header{
+  border-top: 10px solid #e5007e;
+  min-height: 160px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
+  padding: 22px 0 0 0;
+}
+.tagline{
+  color: #f29200;
+  font-size: 4rem;
+}
+
+/* Mosaico de imagenes */
+img.imagen {
+  width: 100%;
+  display: block;
+}
+
+/* Call to action*/
+.botones{
+  height: 145px;
+  background: #e1e1e1;
+  display: flex;
+  justify-content: center;
+
+}
+.botones a{text-decoration: none;}
+.hazte-colaborador--boton ,.haz-un-donativo--boton {
+  height: 145px;
+  width: 400px;
+  font-size: 2.4rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+}
+.hazte-colaborador--boton{
+  background: #662583;
+  position: relative;
+}
+
+.haz-un-donativo--boton{
+  background:#f29200;
+  position: relative;
+}
+.hazte-colaborador--boton > span,
+.haz-un-donativo--boton > span{
+  height: 30px;
+}
+.boton-activo{
+  border-bottom: .1rem solid white;
+}
+.hazte-colaborador--boton:after,
+.haz-un-donativo--boton:after{
+  content: '';
+  position: absolute;
+  top: 99%;
+  left: calc(50% - 35px);
+  width: 70px;
+  height: 30px;
+  border-left: 35px solid transparent !important;
+  border-right: 35px solid transparent !important;
+  border-top: 30px solid transparent;
+}
+.hazte-colaborador--boton:after{
+  border-color: #662583;
+}
+.haz-un-donativo--boton:after{
+  border-color: #f29200;
+}
+
+.hazte-colaborador--boton.flecha-oculta:after,
+.haz-un-donativo--boton.flecha-oculta:after{
+  display: none;
+}
+
+/* Formularios */
+.formularios{
+  max-width: 800px;
+  margin: auto;
+  padding: 70px 50px;
+}
+.formularios.login{
+  max-width: 600px;
+  margin: auto;
+  padding: 70px 50px;
+}
+.formularios.login > .logo{
+  text-align: center;
+}
+.formularios.login > .logo > a > img{
+  max-width: 220px;
+}
+.formularios.login > p{
+  color: #f29200;
+  text-align: center;
+  padding: 30px 0 10px 0;
+  font-size: 24px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.formularios.gracias{
+text-align: center;
+}
+
+.formularios > form > div,
+.formularios > form > div > div.form-group{
+  margin-bottom: 20px;
+}
+.formularios > form > * label{
+  margin: 5px 0;
+  display: block;
+}
+.formularios > form > * label.error{
+  color: red;
+  font-style: italic;
+}
+.formularios > form > * input[type="text"],
+.formularios > form > * input[type="email"],
+.formularios > form > * input[type="password"]{
+  font-family: 'Open Sans', sans-serif;
+  border: 1px solid #DDD;
+  border-radius: 0px;
+  background: #F8F8F8;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0 10px;
+  width: 100%;
+  font-size: 14px;
+  line-height: 38px;
+  color: #444;
+  height: 38px;
+}
+
+.formularios > form > button,
+.formularios > form > * button,
+.formularios > form > input[type="submit"]{
+  font-family: 'Open Sans', sans-serif;
+  border: 0px;
+  border-radius: 0px;
+  background: #f29200;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: auto;
+  padding: 0 10px;
+  width: 100%;
+  max-width: 200px;
+  font-size: 18px;
+  line-height: 38px;
+  color: #fff;
+  height: 45px;
+  transition: all ease-in-out .25s;
+}
+
+.formularios > form > button:hover,
+.formularios > form > * button:hover,
+.formularios > form > input[type="submit"]:hover{
+  opacity: .6;
+}
+.checkbox{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.politica-de-privacidad--link{
+  display: block;
+  flex-basis: 100%;
+  text-decoration: underline;
+  margin-bottom: 10px;
+  color: #f29200;
+  cursor: pointer;
+  transition: all ease-in-out .2s;
+}
+.politica-de-privacidad--link:hover{
+  opacity: .6;
+  text-decoration: none;
+}
+.cantidad-donativo > p,
+.gracias > p{
+  font-size: 24px;
+  text-align: center;
+}
+.cantidad-donativo > form{
+  margin: auto;
+  text-align: center;
+}
+
+/* Formulario "Haz un donativo" */
+.haz-un-donativo, .hazte-colaborador{
+  position: relative;
+}
+.pago-seguro{
+  position: absolute;
+  right: 32px;
+}
+.haz-un-donativo--parte1,
+.hazte-colaborador--parte1 {
+  max-width: 380px;
+}
+.haz-un-donativo--parte1 > div > label,
+.hazte-colaborador--parte1 > div > label,
+.modalidad_de_pago > div > label{
+  display: inline-block;
+  font-weight: bold;
+  font-size: 16px;
+}
+.haz-un-donativo--parte1 > div.form-group,
+.hazte-colaborador--parte1 > div.form-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.form-group-otro{
+  margin: 15px 0 0 0;
+  display: flex;
+  justify-content: space-between;
+}
+.form-group-otro > input{
+  max-width: 90px;
+}
+.haz-un-donativo--parte1 > div > div > div.selectric{
+  min-width: 90px;
+}
+.hazte-colaborador--parte1 > div > div > div.selectric{
+  min-width: 230px;
+}
+.modalidad_de_pago{
+  margin: 30px 0 0 0;
+}
+.formas-de-pago > div{
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+.formas-de-pago > div > input{
+  margin: 0 10px;
+}
+.formas-de-pago > div > label{
+  font-weight: normal;
+}
+.haz-un-donativo--parte2,
+.hazte-colaborador--parte2 {
+  border-top: 1px solid #DDD;
+  padding-top: 10px;
+}
+.haz-un-donativo--parte2 > p,
+.hazte-colaborador--parte2 > p {
+  font-weight: bold;
+}
+.haz-un-donativo--parte2 > div,
+.hazte-colaborador--parte2  > div  {
+  margin-bottom: 20px;
+}
+
+
+/* Administración */
+.admin{
+  padding: 0;
+}
+.admin > p{
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 50px;
+  color: #f29200;
+}
+.admin > div{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.admin > div > a{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-basis: 48%;
+
+  background: #F8F8F8;
+  border: 1px solid #DDD;
+  color: #f29200;
+  text-decoration: none;
+  font-size: 20px;
+
+  height: 90px;
+  padding: 20px;
+  margin: 0 0 30px 0;
+
+  transition: all ease-in-out .2s;
+}
+.admin > div > a:hover{
+  background: #fff;
+  border: 1px solid #f29200;
+}
+.admin > div > a > img{
+  max-width: 60px;
+  margin: 0 20px 0 0;
+}
+
+
+/* Footer */
+footer{
+  max-width: 800px;
+  border-top: 1px solid #000;
+
+  margin: 0px auto;
+  padding: 50px 0;
+}
+.pre-footer{
+  font-size: 2rem;
+  text-align: center;
+  margin: 0 0 50px 0;
+  padding: 0 0 50px 0;
+  border-bottom: 1px solid #000;
+}
+.titular-verde{
+  font-size: 2.4rem;
+  max-width: 430px;
+  display: block;
+  margin: auto;
+  font-weight: 600;
+  color: #008c3d;
+}
+.titular-rosa{
+  font-weight: 600;
+  color: #e5007e;
+}
+.footer{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.texto--footer{
+  font-size: 2.4rem;
+  padding: 0 1rem;
+  max-width: 480px;
+}
+.texto--footer b{
+  font-weight: 600;
+  color: #e64c16;
+}
+
+
+@media (max-width: 820px) {
+  header{
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+  }
+  .logo, .tagline{
+    margin: 10px auto;
+    text-align: center;
+  }
+  .tagline{
+    font-size: 3rem;
+  }
+  .tagline p{
+    margin: 0;
+  }
+  .logo img, .tagline img{
+    max-width: 80%;
+    margin: auto;
+    text-align: center;
+  }
+  .botones{
+    height: 60px;
+    background: #e1e1e1;
+    display: flex;
+    justify-content: center;
+  }
+  .botones > a{
+    width: 50%;
+  }
+  .hazte-colaborador--boton ,.haz-un-donativo--boton {
+    height: 60px;
+    width: 100%;
+    max-width: 400px;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+  .hazte-colaborador--boton:after,
+  .haz-un-donativo--boton:after{
+    left: calc(50% - 25px);
+    width: 70px;
+    height: 30px;
+    border-left: 25px solid transparent !important;
+    border-right: 25px solid transparent !important;
+    border-top: 20px solid transparent;
+  }
+  .hazte-colaborador--formulario, .haz-un-donativo--formulario{
+    padding: 3rem 2rem;
+  }
+  .hazte-colaborador--boton > span,
+  .haz-un-donativo--boton > span{
+    height: 16px;
+  }
+  .formularios {
+    padding: 50px 20px;
+  }
+  footer{
+    margin: 25px 0;
+    padding: 25px 0;
+  }
+  .pre-footer{
+    margin: 0 0 25px 0;
+    padding: 0 0 25px 0;
+  }
+  .pre-footer > p{
+    font-size: 1.6rem;
+    padding: 0 20px;
+  }
+  .titular-verde{
+    font-size: 1.8rem;
+  }
+  .footer{
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer > div{
+    margin: 10px;
+  }
+  .texto--footer{
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 640px){
+
+  .hazte-colaborador--boton > span,
+  .haz-un-donativo--boton > span{
+    height: 34px;
+    text-align: center;
+  }
+  .hazte-colaborador--boton > span{
+    max-width: 105px;
+  }
+  .haz-un-donativo--boton > span{
+    max-width: 75px;
+  }
+  .haz-un-donativo--parte1 > div > div > div.selectric,
+  .hazte-colaborador--parte1 > div > div > div.selectric{
+    width: calc(100vw - 45px);
+    max-width: 380px;
+  }
+  .haz-un-donativo--parte1 > div > label,
+  .hazte-colaborador--parte1 > div > label,
+  .modalidad_de_pago > div > label{
+    flex-basis: 100%;
+    font-size: 14px;
+  }
+  .haz-un-donativo--parte1 > div.form-group,
+  .hazte-colaborador--parte1 > div.form-group,
+  .form-group-otro {
+    flex-wrap: wrap;
+  }
+  .form-group-otro > input {
+    max-width: 100%;
+  }
+  .pago-seguro{
+    position: absolute;
+    right: 0;
+    bottom: 51px;
+  }
+  .admin > div > a{
+    font-size: 18px;
+  }
+  .admin > div > a > img{
+    width: 40px;
+  }
+}
+
+@media (max-width: 425px){
+  .formularios{
+    padding: 50px 15px 100px 15px;
+  }
+  .formularios > form > button,
+  .formularios > form > * button{
+    max-width: 100%;
+  }
+  .pago-seguro{
+    position: absolute;
+    left: calc(50% - 70px);
+    bottom: -6px;
+    max-width: 140px;
+  }
+  .admin > div > a{
+    flex-basis: 100%;
+  }
+}

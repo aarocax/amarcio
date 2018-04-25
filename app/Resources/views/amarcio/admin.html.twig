@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+<!-- Cabecera -->
+<header>
+    <div class="logo">
+      <a href="{{ path('homepage') }}" title=""><img src="../images/fundacionandresmarcio--logo.jpg" alt=""></a>
+    </div>
+</header>
+{% endblock %}
+
+{% block body %}
+  <div class="formularios admin">
+      <p class="multicolore">Área de administración</p>
+      <div>
+        <a href="{{ path('donations') }}"><img src="../images/file-csv.svg">Todas las donaciones</a>
+        <a href="{{ path('members') }}" title=""><img src="../images/file-csv.svg">Todos los registrados</a>
+        <a href="{{ path('member-member') }}" title=""><img src="../images/file-csv.svg">Socios</a>
+        <a href="{{ path('member-donation') }}" title=""><img src="../images/file-csv.svg">Donantes</a>
+      </div>
+  </div>
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% block stylesheets %}{% endblock %}

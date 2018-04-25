@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+  <!-- Cabecera -->
+  <header>
+      <div class="logo">
+        <a href="{{ path('homepage') }}" title=""><img src="../images/fundacionandresmarcio--logo.jpg" alt=""></a>
+      </div>
+      <div class="tagline">
+        <p class="multicolore">¡Buenos días!</p>
+      </div>
+  </header>
+
+  <!-- Slider -->
+  <div class="my-slider">
+  	<ul>
+  		<li><img class="imagen" src="../images/fundacionandresmarcio--mosaico__01.jpg" alt=""></li>
+  		<li><img class="imagen" src="../images/fundacionandresmarcio--mosaico__02.jpg" alt=""></li>
+      <li><img class="imagen" src="../images/fundacionandresmarcio--mosaico__03.jpg" alt=""></li>
+  	</ul>
+  </div>
+
+  <!-- Call to action -->
+  <div>
+  <div class="botones">
+    <a href="{{ path('hazte-socio') }}">
+      <div class="hazte-colaborador--boton">
+        <span class="multicolore">Hazte Colaborador</span>
+      </div>
+    </a>
+
+    <a href="{{ path('haz-un-donativo') }}" title="">
+      <div class="haz-un-donativo--boton">
+        <span class="multicolore">Haz un Donativo</span>
+      </div>
+    </a>
+  </div>
+  </div>
+
+{% endblock %}
+
+{% block body %}
+
+
+{% endblock %}
+
+{% block footer %}
+  <!-- Footer -->
+  <footer>
+    <div class="pre-footer">
+      <p><span class="titular-verde">También puedes realizar un ingreso o una transferencia bancaria</span></p>
+      <p>Puedes colaborar haciendo una donación mediante transferencia a la cuenta de la fundación en LA CAIXA:</p>
+      <p>Número IBAN <span class="titular-rosa">ES06 2100 8648 83 020003894</span></p>
+      <p>Recuerda poner en el concepto de la transferencia tu DNI y tu nombre con objeto de dar cumplimiento a la Ley de Prevención de Capitales.</p>
+    </div>
+    <div class="footer">
+      <div class="texto--footer">
+        También puedes <b>donar 1 euro al mes</b> para financiar uno de los proyectyos que tenemos en curso en el enlace:
+      </div>
+      <div class="logo--footer">
+        <a href="https://www.teaming.net/fundacionandresmarcio" target="_blank">
+        <img src="../images/fundacionandresmarcio--teaming.jpg" alt="">
+        </a>
+      </div>
+    </div>
+  </footer>
+
+{% endblock %}
+
+
+
+{% block stylesheets %}{% endblock %}

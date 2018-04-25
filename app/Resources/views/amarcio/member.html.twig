@@ -1,0 +1,117 @@
+{% extends 'amarcio/index.html.twig' %}
+
+{% block body %}
+<!-- Formularios -->
+  <div class="formularios hazte-colaborador">
+    <img class="pago-seguro" src="../images/fundacionandresmarcio--pago-seguro.jpg" alt="">
+      {{ form_start(form, {'attr': {'id': 'hazteSocioForm'}}) }}
+        <div class="hazte-colaborador--parte1">
+          <div class="form-group">
+            {{ form_label(form.contribution) }}
+            {{ form_widget(form.contribution, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.contribution) }}
+          </div>
+          <div class="form-group">
+            {{ form_label(form.frequency) }}
+            {{ form_widget(form.frequency, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.frequency) }}
+          </div>
+          <button type="button" id="button-continuar-member">Continuar</button>
+          <label class="error" id="hazte-colaborador-mensaje" style="display: none;">Por favor indique el importe y la frecuencia</label>
+        </div>
+        <div class="hazte-colaborador--parte2" id="datos_personales" style="display: none;">
+          <p>Tus datos ¡te llevará menos de un minuto!</p>
+          <div class="form-group">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.name) }}
+          </div>
+          <div class="form-group">
+            {{ form_label(form.surname) }}
+            {{ form_widget(form.surname, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.surname) }}
+          </div>
+          <div class="form-group">
+            {{ form_label(form.nif) }}
+            {{ form_widget(form.nif, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.nif) }}
+          </div>
+          <div class="form-group">
+            {{ form_label(form.iban) }}
+            {{ form_widget(form.iban, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.iban) }}
+          </div>
+          <div class="form-group">
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.email) }}
+          </div>
+          <div class="form-group">
+            {{ form_label(form.cp) }}
+            {{ form_widget(form.cp, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.cp) }}
+          </div>
+          <div class="form-group">
+            {{ form_label(form.phone) }}
+            {{ form_widget(form.phone, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.phone) }}
+          </div>
+          <div class="form-group">
+            {{ form_label(form.known) }}
+            {{ form_widget(form.known, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.known) }}
+          </div>
+          <div class="form-group">
+            * Campos obligatorios
+          </div>
+          <div class="form-group checkbox">
+            {{ form_label(form.correspondence) }}
+            {{ form_widget(form.correspondence, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.correspondence) }}
+          </div>
+          <div id="correspondence-data" class="" style="display: none;">
+            <div class="form-group">
+              {{ form_label(form.address) }}
+              {{ form_widget(form.address, {'attr': {'class': 'form-control'}}) }}
+              {{ form_errors(form.address) }}
+            </div>
+            <div class="form-group">
+              {{ form_label(form.town) }}
+              {{ form_widget(form.town, {'attr': {'class': 'form-control'}}) }}
+              {{ form_errors(form.town) }}
+            </div>
+            <div class="form-group">
+              {{ form_label(form.province) }}
+              {{ form_widget(form.province, {'attr': {'class': 'form-control'}}) }}
+              {{ form_errors(form.province) }}
+            </div>
+          </div>
+          <div class="g-recaptcha" data-sitekey="6LccORsTAAAAAJJLxFpHhFuUH3cG_enKLzN7tZvj"></div>
+          {% if not captcha_message == "" %}
+            <div class="form-group">
+              {{ captcha_message }}
+            </div>
+          {% endif %}
+          <div class="form-group checkbox">
+              {{ form_label(form.acceptConditions) }}
+              {{ form_widget(form.acceptConditions, {'attr': {'class': 'form-control'}}) }}
+              {{ form_errors(form.acceptConditions) }}
+              <a class="politica-de-privacidad--link" data-remodal-target="modal">Leer política de privacidad</a>
+          </div>
+
+
+          {{ form_rest(form) }}
+          <button type="submit" name="enviar" class="btn btn-primary"> Enviar</button>
+			{{ form_end(form) }}
+      </div>
+  </div>
+
+
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+{% block javascript %}
+	{{ parent() }}
+{% endblock %}
