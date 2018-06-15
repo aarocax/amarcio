@@ -6,6 +6,7 @@
     <img class="pago-seguro" src="../images/fundacionandresmarcio--pago-seguro.jpg" alt="">
       {{ form_start(form, {'attr': {'id': 'hazteSocioForm'}}) }}
         <div class="hazte-colaborador--parte1">
+          <h2>Gracias por ayudarnos a que los niños con laminopatía nunca pierdan la sonrisa. Con tu apoyo es posible</h2>
           <div class="form-group">
             {{ form_label(form.contribution) }}
             {{ form_widget(form.contribution, {'attr': {'class': 'form-control'}}) }}
@@ -16,6 +17,12 @@
             {{ form_widget(form.frequency, {'attr': {'class': 'form-control'}}) }}
             {{ form_errors(form.frequency) }}
           </div>
+          <p>Los donativos a la Fundación Andrés Marcio, niños contra la
+            laminopatía son deducibles en el IRPF y en el Impuesto de Sociedades.
+            Para los particulares, en los primeros 150 € donados la deducción es
+            del 75% y 30% adicional en cantidades superiores.
+            <a href="" class="taxes" data-remodal-target="taxes">Saber más</a>
+          </p>
           <button type="button" id="button-continuar-member">Continuar</button>
           <label class="error" id="hazte-colaborador-mensaje" style="display: none;">Por favor indique el importe y la frecuencia</label>
         </div>

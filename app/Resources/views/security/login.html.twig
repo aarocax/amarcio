@@ -1,13 +1,11 @@
-{# {% extends 'amarcio/index.html.twig' %} #}
+{% extends 'base.html.twig' %}
 
 
 {% block body %}
-<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-<link rel="stylesheet" href="{{ asset('css/selectric.css') }}">
 
   <div class="formularios login">
     <div class="logo">
-      <a href="{{ path('homepage') }}" title=""><img src="../images/fundacionandresmarcio--logo.jpg" alt=""></a>
+      <a href="{{ path('homepage') }}" title=""><img src="{{ asset('images/fundacionandresmarcio--logo.jpg') }}" alt=""></a>
     </div>
     <p class="multicolore">Iniciar sesión</p>
     <form class="login" action="{{ path('security_login') }}" method="post">

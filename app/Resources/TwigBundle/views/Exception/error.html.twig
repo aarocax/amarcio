@@ -1,25 +1,14 @@
-{% extends 'amarcio/index.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block body %}
-  <div class="">
-    
-    <section class="content">
-      <div class="error-page">
-        <div class="error-content">
-          <h3><i class="fa fa-warning text-yellow"></i> Uups! Se ha producido un error.</h3>
-          <p>
-            Lo sentimos pero se ha producido un error.
-          </p>
-          <p>
-            Por favor pongase en contacto con el departamento técnico.
-          </p>
-        </div>
-        <!-- /.error-content -->
-      </div>
-      <!-- /.error-page -->
-    </section>
-    <!-- /.content -->
+<div class="formularios error">
+  <div class="logo">
+    <a href="{{ path('homepage') }}" title=""><img src="{{ asset('images/fundacionandresmarcio--logo.jpg') }}" alt=""></a>
   </div>
+  <p class="multicolore"><strong>Uups! Sección no encontrada.</strong></p>
+  <p>Lo sentimos pero donde Ud. intenta acceder no existe.</p>
+  <p>Por favor pongase en contacto con el departamento técnico.</p>
+</div>
 {% endblock %}
 
 {% block stylesheets %}{% endblock %}

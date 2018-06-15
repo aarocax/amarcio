@@ -28,8 +28,8 @@ class DonationController extends Controller
 
     if ($form->isSubmitted() && $form->isValid()) {
     	$captchaverify = $this->get('app.captcha.verify');
-      if (!$captchaverify->verify($request->get('g-recaptcha-response'))) {
-    	//if ("a" === "b" ) {
+      //if (!$captchaverify->verify($request->get('g-recaptcha-response'))) {
+    	if ("a" === "b" ) {
     		$captcha_message = "Se requiere un captcha válido";
     	} else {
         $orderId = strval(time());
@@ -197,6 +197,7 @@ class DonationController extends Controller
             $donation->setAmount($data->Ds_Amount / 100);
             $donation->setReference("refence");
             $pm->persist($donation);
+            $this->sendEmail($member[3], $member[4], $member[6]);
             $message = "Muchas gracias por hacer su donativo";
           } else {
             $message = "Su donativo ya fué registrado. Muchas gracias por hacer su donativo";
@@ -237,6 +238,7 @@ class DonationController extends Controller
             $donation->setAmount($data->Ds_Amount / 100);
             $donation->setReference("refence");
       			$pm->persist($donation);
+            $this->sendEmail($member[3], $member[4], $member[6]);
             $message = "Muchas gracias por hacer su donativo";
           } else {
             $message = "Su donativo ya fué registrado. Muchas gracias por hacer su donativo";
@@ -254,5 +256,16 @@ class DonationController extends Controller
     return $this->render('amarcio/thanks.html.twig', array(
         'message' => $message,
       ));
+  }
+
+  public function sendEmail($name, $surname, $email)
+  {
+    // realizamos el envío
+    $emailer = $this->get('app.notification.emailer');
+    $view = $this->renderView(
+        'amarcio/notification-member.txt.twig',
+        array('name' => $name, 'surname' => $surname)
+        );
+    $emailer->send($view, $email);
   }
 }

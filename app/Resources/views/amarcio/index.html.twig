@@ -4,19 +4,19 @@
   <!-- Cabecera -->
   <header>
       <div class="logo">
-        <a href="{{ path('homepage') }}" title=""><img src="../images/fundacionandresmarcio--logo.jpg" alt=""></a>
+        <a href="{{ path('homepage') }}" title=""><img src="{{ asset('images/fundacionandresmarcio--logo.jpg') }}" alt=""></a>
       </div>
       <div class="tagline">
-        <p class="multicolore">¡Buenos días!</p>
+        <p class="multicolore">Un gran Corazón ayuda a otro Gran Corazón</p>
       </div>
   </header>
 
   <!-- Slider -->
   <div class="my-slider">
   	<ul>
-  		<li><img class="imagen" src="../images/fundacionandresmarcio--mosaico__01.jpg" alt=""></li>
-  		<li><img class="imagen" src="../images/fundacionandresmarcio--mosaico__02.jpg" alt=""></li>
-      <li><img class="imagen" src="../images/fundacionandresmarcio--mosaico__03.jpg" alt=""></li>
+  		<li><img class="imagen" src="{{ asset('images/fundacionandresmarcio--mosaico__01.jpg') }}" alt=""></li>
+  		<li><img class="imagen" src="{{ asset('images/fundacionandresmarcio--mosaico__02.jpg') }}" alt=""></li>
+      <li><img class="imagen" src="{{ asset('images/fundacionandresmarcio--mosaico__03.jpg') }}" alt=""></li>
   	</ul>
   </div>
 
@@ -55,11 +55,11 @@
     </div>
     <div class="footer">
       <div class="texto--footer">
-        También puedes <b>donar 1 euro al mes</b> para financiar uno de los proyectyos que tenemos en curso en el enlace:
+        También puedes <b>donar 1 euro al mes</b> para financiar uno de los proyectos que tenemos en curso en el enlace:
       </div>
       <div class="logo--footer">
         <a href="https://www.teaming.net/fundacionandresmarcio" target="_blank">
-        <img src="../images/fundacionandresmarcio--teaming.jpg" alt="">
+        <img src="{{ asset('images/fundacionandresmarcio--teaming.jpg') }}" alt="">
         </a>
       </div>
     </div>
